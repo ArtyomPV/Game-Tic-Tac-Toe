@@ -11,9 +11,6 @@ def showDesk(desk):
         print(i, end = ' ')
         print(*desk[i])
 
-def input_coordinates():
-    pass
-
 def valid_coordinates(x, y, desk):
     if desk[x][y] == 'X' or desk[x][y] == 'O': 
         return False
@@ -34,7 +31,7 @@ def check_winner(desk, symbol):
 
 showDesk(desk)
 while count_steps:
-    # start code
+
     print(f'Ходит игрок {gamer}')
     X, Y = map(int, input("Введите координаты ряда и столбца через пробел ").split())
     count_steps -= 1
@@ -60,6 +57,3 @@ while count_steps:
     if check_winner(desk, 'X'):
         print('Winner gamer X')
         break
-     # end code
-
-# showDesk(desk)
