@@ -1,9 +1,10 @@
-desk = [['X', '-', '-'],
-        ['-', 'X', '-'],
+desk = [['-', '-', '-'],
+        ['-', '-', '-'],
         ['-', '-', '-']]
 count_steps = 9
 
 change_gamer = True
+gamer = 'X'
 def showDesk(desk):
     print(' ', 0, 1, 2)
     for i in range(3):
@@ -18,7 +19,7 @@ def valid_coordinates(x, y, desk):
         return False
     else: 
         return True
-# проблема в проверке выигрышной комбинации. Проверить функцию check_winner
+
 def check_winner(desk, symbol):
     for i in range(3):
         if all(desk[i][j] == symbol for j in range(3)):
@@ -34,6 +35,7 @@ def check_winner(desk, symbol):
 showDesk(desk)
 while count_steps:
     # start code
+    print(f'Ходит игрок {gamer}')
     X, Y = map(int, input("Введите координаты ряда и столбца через пробел ").split())
     count_steps -= 1
 
@@ -41,16 +43,20 @@ while count_steps:
         if change_gamer:
             desk[X][Y] = 'X'
             showDesk(desk)
+            gamer = 'O'
             change_gamer  = False
         else: 
             desk[X][Y] = 'O'
             showDesk(desk)
+            gamer = 'X'
             change_gamer = True
     else:
-        print('Клетка занята. Выбирите другую ячейку')
-        showDesk(desk)
+        print('Клетка занята. Выберите другую ячейку')
+        # showDesk(desk)
         count_steps += 1
-
+    if check_winner(desk, 'O'):
+        print('Winner gamer O')
+        break
     if check_winner(desk, 'X'):
         print('Winner gamer X')
         break
