@@ -21,3 +21,22 @@
 2. valid_position(X, Y) return True or False
 3. show_desk(X, Y, sign) передаем координаты и знак (X or O)
 4. check_winner()
+
+
+PS проблема в поиске выигрышной комбинации.<br>
+Как ее проверять?<br>
+Для каждого игрока существует 8 выигрышных комбинаций<br>
+проверка по диагонали:<br>
+
+    def check_winner(desk, symbol):
+
+    count = 0
+        for i in range(3):
+        if desk[i][i] == symbol:
+            count += 1
+            print(f'count = {count}')
+            if count == 3:
+                return True
+    return False
+
+проверка по горизонтали
